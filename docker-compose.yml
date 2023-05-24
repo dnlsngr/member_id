@@ -11,6 +11,7 @@ services:
     volumes:
       - .:/home/node/app
       - node_modules:/home/node/app/node_modules
-    networks:
-      - app-network
     command: npm run start
+
+volumes:
+  node_modules:
