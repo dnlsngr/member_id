@@ -12,7 +12,7 @@ export interface MemberInfo {
   id: string;
   first_name: string;
   last_name: string;
-  birthdate: string;
+  dob: string;
   country: CountryType;
 }
 export interface ValidationResponse {
@@ -36,6 +36,7 @@ const validationResponse = (invalidReason: string | null) => {
 
 memberRoutes.post("/", async (req: express.Request, res: any) => {
   console.log("received request on POST /member-id/");
+  //TODO: Validate body if we are going to expand the use case for this
   const memberId = await generateId();
   const memberInfo = { id: memberId, ...req.body };
   return res.status(200).send({ memberInfo });

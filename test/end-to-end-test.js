@@ -12,6 +12,28 @@ describe("Making a request", () => {
     res.text.should.equal("success");
   });
 
+  describe("generate", () => {
+    it("should return a valid member object with a generated id", async () => {
+      const memberInfoInput = {
+        first_name: "Jose",
+        last_name: "Vasconcelos",
+        dob: "01/01/1981",
+        country: "MX",
+      };
+      const res = await chai
+        .request(appForTest)
+        .post("/member_id")
+        .send(memberInfoInput);
+      res.should.have.status(200);
+      const memberid = res.body.memberInfo.id;
+      memberid.should.be.a("string");
+      // TODO: get babel working right in mocha tests to use spread operator here
+      let expectedResult = JSON.parse(JSON.stringify(memberInfoInput));
+      expectedResult.id = memberid;
+      res.body.memberInfo.should.deep.equal(expectedResult);
+    });
+  });
+
   describe("validate", () => {
     it("should return a success response for a valid string", async () => {
       const VALID_MEMBER_ID =
