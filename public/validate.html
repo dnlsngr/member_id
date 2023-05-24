@@ -1,0 +1,36 @@
+<html>
+  <head>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script>
+      function sendform() {
+        var memberId = $("#memberid").val()
+        var data = {
+          "memberid": memberId
+        }
+        
+        fetch("/member_id/validate", { 
+          method:"POST", 
+          headers: {
+            "Content-Type": "application/json",
+          }, 
+          body: JSON.stringify(data)})
+          .then(res => res.text())
+          .then(response => {
+            responseObj = JSON.parse(response)
+            if (responseObj.isValid) {
+              alert(memberId + " is valid")
+            } else {
+              alert(responseObj.invalidReason)
+            }
+          })
+        .catch(err => console.error(err));
+        return false;
+      }
+    </script>
+  </head>
+  <body>
+    <label for="memberid">Enter ID to validate:</label><br>
+    <input type="text" id="memberid" name="memberid"><br>
+    <button onclick="sendform()">Validate</button>
+  </body>
+</html>

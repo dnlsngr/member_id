@@ -132,3 +132,4 @@ dist
 
 # TS artifacts
 index.js
+.vscode
