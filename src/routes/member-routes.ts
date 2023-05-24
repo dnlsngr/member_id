@@ -22,7 +22,7 @@ export interface ValidationResponse {
 
 // HTML
 memberRoutes.get("/validate", async (req: express.Request, res: any) => {
-  return res.sendFile("public/validate.html");
+  return res.sendFile("public/validate.html", { root: __dirname + "/../.." });
 });
 
 // API
