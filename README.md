@@ -4,7 +4,10 @@ Application can be viewed at http://159.89.99.6:3000/member_id/validate
 Try it out with the ID: 7c8c1cdf-d96e-473c-aa98-ad4a67edb51e_3a6048a15b8c6f166f10bef7357883c07f24ad6a
 
 Install application locally with `npm install` and run with `npm run`
+
 Tests can be run locally using the command `npm run test`
+
+Run application using docker with `docker-compose up --build` (not recommended for development)
 
 # Notes
 
@@ -14,7 +17,7 @@ Thanks in advance for evaluating my submission. To start, I put this together in
 - Types via Typescript, including types for API-level object definitions
 - A bit of basic code organization
 
-For the validatable id, I chose something that is pretty transparent, and provided error messages that were very clear about the validation method. It wasn't clear whether this was intended to be an external-facing feature, or an internal tool that CS or operational folks might use.
+For the validatable id, I chose something that is pretty transparent, and provided error messages that were very clear about the validation method. It wasn't clear whether this was intended to be an external-facing feature, or an internal tool that CS or operational folks might use. It would be great to workshop requirements like this with the team.
 
 Here is a list of things I might do with more time:
 
@@ -23,5 +26,3 @@ Here is a list of things I might do with more time:
 - Spend more time on the Docker setup. This was the fastest possible Dockerfile generation, not utilizing any special permissions or build optimizations. This setup would also be aggressively useless in development without hot reloading set up.
 - Leverage better service management in production. To start with, we need to implement TLS (probably via certbot), an nginx layer, and something like gunicorn (or if we're going hard on the Docker deployment strategy, a more robust docker compose file).
 - Redis cacheing
-
-I'll also add a note that these requirements seemed a little unusual, and I would have loved the opportunity to workshop them with the team.
